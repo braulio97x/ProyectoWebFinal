@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Persona {
-
+public class Carrito{
 	@Id
 	private String cedula;
 	private String nombre;
