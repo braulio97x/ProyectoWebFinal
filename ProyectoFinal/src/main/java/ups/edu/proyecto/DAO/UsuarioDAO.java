@@ -32,7 +32,7 @@ public class UsuarioDAO {
 		em.remove(p);
 	}
 	
-	public List<Usuario> getPersonas(String nombre){
+	public List<Usuario> getUsuarios(String nombre){
 		
 		String jpql2="SELECT p FROM Usuario p WHERE nombre LIKE ?1";
 		

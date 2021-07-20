@@ -24,8 +24,8 @@ public class ProductoDAO {
 		em.merge(producto);
 	}
 	
-	public Producto read(String cedula) {
-		Producto p = em.find(Producto.class, cedula);
+	public Producto read(int codigo) {
+		Producto p = em.find(Producto.class, codigo);
 		return p;
 	}
 	

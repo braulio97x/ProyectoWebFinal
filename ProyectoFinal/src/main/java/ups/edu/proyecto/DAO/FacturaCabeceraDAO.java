@@ -24,8 +24,8 @@ public class FacturaCabeceraDAO {
 		em.merge(facturaCab);
 	}
 	
-	public FacturaCabecera read(String cedula) {
-		FacturaCabecera p = em.find(FacturaCabecera.class, cedula);
+	public FacturaCabecera read(int codigo) {
+		FacturaCabecera p = em.find(FacturaCabecera.class, codigo);
 		return p;
 	}
 	
