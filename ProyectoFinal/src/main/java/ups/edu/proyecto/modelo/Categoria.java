@@ -1,13 +1,20 @@
 package ups.edu.proyecto.modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categoria {
 	@Id
 	private int codigo;
 	private String nombre;
+	
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	private List<Producto> productos;
 
 	public int getCodigo() {
 		return codigo;
@@ -24,5 +31,15 @@ public class Categoria {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+	
+	
 
 }

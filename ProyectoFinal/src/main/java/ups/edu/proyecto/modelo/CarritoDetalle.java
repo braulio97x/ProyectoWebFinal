@@ -2,6 +2,8 @@ package ups.edu.proyecto.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CarritoDetalle {
@@ -11,6 +13,14 @@ public class CarritoDetalle {
 	private Double precio;
 	private Double iva;
 	private Double total;
+	
+	@ManyToOne
+	@JoinColumn(name = "carrito_cabecera_id")
+	private CarritoCabecera carritoCabecera;
+	
+	@ManyToOne
+	@JoinColumn(name = "producto_id")
+	private Producto producto;
 
 	public int getCodigoCarDet() {
 		return codigoCarDet;
@@ -52,4 +62,21 @@ public class CarritoDetalle {
 		this.total = total;
 	}
 
+	public CarritoCabecera getCarritoCabecera() {
+		return carritoCabecera;
+	}
+
+	public void setCarritoCabecera(CarritoCabecera carritoCabecera) {
+		this.carritoCabecera = carritoCabecera;
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	
 }

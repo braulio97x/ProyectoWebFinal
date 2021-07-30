@@ -1,7 +1,11 @@
 package ups.edu.proyecto.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -11,6 +15,13 @@ public class Usuario {
 	private String apellido;
 	private String direccion;
 	private String correo;
+	
+	@ManyToOne
+	@JoinColumn(name = "rol_id")
+	private Rol rol;
+	
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private CarritoCabecera carritoCabecera;
 
 	public String getCedula() {
 		return cedula;
@@ -51,5 +62,23 @@ public class Usuario {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	public CarritoCabecera getCarritoCabecera() {
+		return carritoCabecera;
+	}
+
+	public void setCarritoCabecera(CarritoCabecera carritoCabecera) {
+		this.carritoCabecera = carritoCabecera;
+	}
+	
+	
 
 }
