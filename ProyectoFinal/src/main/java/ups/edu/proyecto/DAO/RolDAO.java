@@ -24,23 +24,23 @@ public class RolDAO {
 		em.merge(rol);
 	}
 	
-	public Rol read(String cedula) {
-		Rol p = em.find(Rol.class, cedula);
+	public Rol read(int codigo) {
+		Rol p = em.find(Rol.class, codigo);
 		return p;
 	}
 	
-	public void delete(String cedula) {
-		Rol p = em.find(Rol.class, cedula);
+	public void delete(int codigo) {
+		Rol p = em.find(Rol.class, codigo);
 		em.remove(p);
 	}
 	
-	public List<Rol> getRoles(String nombre){
+	public List<Rol> getRoles(){
 		
-		String jpql2="SELECT p FROM Rol p WHERE nombre LIKE ?1";
+		String jpql2="SELECT p FROM Rol p";
 		
-		nombre= nombre+"%";
+		//nombre= nombre+"%";
 		Query query= em.createQuery(jpql2, Rol.class);
-		query.setParameter(1, nombre);
+		//query.setParameter(1, nombre);
 		
 		List<Rol> roles=query.getResultList();
 		return roles;
