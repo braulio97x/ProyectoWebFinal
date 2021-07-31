@@ -40,5 +40,9 @@ public class RolON {
 		
 		return daoRol.getRoles();
 	}
+	
+	public Rol getRolNombre(String nombre) {
+		return daoRol.getRolNombre(nombre);
+	}
 
 }

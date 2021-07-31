@@ -55,5 +55,9 @@ public void insertUsuario(Usuario usuario) throws Exception {
 	}
 	*/
 	
+	public Usuario iniciarSesion(Usuario usuario) {
+		return daoUsuario.getIniciarSesion(usuario);
+	}
+	
 	
 }

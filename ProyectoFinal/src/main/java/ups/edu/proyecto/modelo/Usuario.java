@@ -15,6 +15,7 @@ public class Usuario {
 	private String apellido;
 	private String direccion;
 	private String correo;
+	private String contrasena;
 	
 	@ManyToOne
 	@JoinColumn(name = "rol_id")
@@ -78,6 +79,15 @@ public class Usuario {
 	public void setCarritoCabecera(CarritoCabecera carritoCabecera) {
 		this.carritoCabecera = carritoCabecera;
 	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+	
 	
 	
 
