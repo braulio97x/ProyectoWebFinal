@@ -1,7 +1,11 @@
 package ups.edu.proyecto.view;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,8 +15,8 @@ import ups.edu.proyecto.modelo.Rol;
 import ups.edu.proyecto.modelo.Usuario;
 
 @Named
-@RequestScoped
-public class UsuarioBean {
+@ViewScoped
+public class UsuarioBean implements Serializable {
 	
 	@Inject
 	private UsuarioON usuarioON;
@@ -54,8 +58,11 @@ public class UsuarioBean {
 		if(newUsuario.getRol() == null) {
 			newRol = new Rol();
 			newRol.setCargo("Invitado");
-			newRol=rolON.getRolNombre(newRol.getCargo());
+			//System.out.println(newRol.getCargo());
+			newRol=rolON.getRolNombreList(newRol.getCargo());
+			System.out.println(newRol.getCargo());
 			newUsuario.setRol(newRol);
+			System.out.println("Con Usuario "+ newUsuario.getRol().getCargo() + " "+newUsuario.getRol().getCodigo());
 		
 			//usuarioON.insertUsuario(newUsuario);
 		}else {
@@ -64,11 +71,16 @@ public class UsuarioBean {
 
 	}
 	
+	
 	public String crearCuenta(){
 		String mensaje="";
 		try {
+			newUsuario.getRol().setCargo("Cliente");
+			Rol rol = rolON.getRolNombreList(newUsuario.getRol().getCargo());
+			newUsuario.setRol(rol);
 			usuarioON.insertUsuario(newUsuario);
-			return mensaje="OK";
+			System.out.println(newUsuario.getRol().getCargo());
+			return "IniciarSesion?faces-redirect=true";
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -92,6 +104,14 @@ public class UsuarioBean {
 	public String probando() {
 		String mensaje="Ok";
 		System.out.println("Hola");
+		//newUsuario.setRol(newRol);
+		//System.out.println(newUsuario.getRol().getCargo());
+		//String cargo= newUsuario.getRol().getCargo();
+		//Rol rol=rolON.getRolNombreList(cargo);
+		//Rol rol2=rolON.getRolNombre(cargo);
+		//System.out.println(rol.getCodigo() +" " +rol.getCargo() +" Encontro Rol Query");
+		//System.out.println(rol.getCodigo()+" "+rol.getCargo());
+		
 		return mensaje;
 		
 	}

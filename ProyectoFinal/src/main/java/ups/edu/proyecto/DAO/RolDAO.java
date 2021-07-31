@@ -47,7 +47,7 @@ public class RolDAO {
 	}
 
 	public Rol getRolNombre(String nombre) {
-		String jpql2 = "SELECT p FROM Rol p" + " WHERE nombre LIKE ?1";
+		String jpql2 = "SELECT p FROM Rol p" + " WHERE cargo LIKE ?1";
 
 		nombre = nombre + "%";
 		Query query = em.createQuery(jpql2, Rol.class);
@@ -60,4 +60,20 @@ public class RolDAO {
 		//List<Rol> roles = query.getResultList();
 		return resultado;
 	}
+	
+	public List<Rol> getRolNombreList(String nombre) {
+		String jpql2 = "SELECT p FROM Rol p" + " WHERE cargo LIKE ?1";
+
+		nombre = nombre + "%";
+		Query query = em.createQuery(jpql2, Rol.class);
+		query.setParameter(1, nombre);
+
+		List<Rol> roles = query.getResultList();
+
+		//Rol resultado = (Rol) roles;
+
+		//List<Rol> roles = query.getResultList();
+		return roles;
+	}
+	
 }

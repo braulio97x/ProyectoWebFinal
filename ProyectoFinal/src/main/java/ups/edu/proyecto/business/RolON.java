@@ -44,5 +44,17 @@ public class RolON {
 	public Rol getRolNombre(String nombre) {
 		return daoRol.getRolNombre(nombre);
 	}
+	
+	public Rol getRolNombreList(String nombre){
+		List<Rol> roles= daoRol.getRolNombreList(nombre);
+		Rol rol= new Rol();
+		for(Rol elemento:roles) {
+			rol.setCodigo(elemento.getCodigo());
+			//System.out.println(elemento.getCargo());
+			rol.setCargo(elemento.getCargo());
+		}
+		return rol;
+	}
+	
 
 }
