@@ -47,25 +47,45 @@ public class UsuarioDAO {
 	}
 	
 	
-	public Usuario getIniciarSesion(Usuario usuario) {
+	public List<Usuario> getIniciarSesion(Usuario usuario) {
 		String correo= usuario.getCorreo();
 		String contrasena=usuario.getContrasena();
 		String jpql2 = "SELECT p FROM Usuario p" + " WHERE correo LIKE ?1 AND contrasena LIKE ?2";
 
 		correo = correo + "%";
 		contrasena= contrasena+"%";
-		Query query = em.createQuery(jpql2, Rol.class);
+		Query query = em.createQuery(jpql2, Usuario.class);
 		query.setParameter(1, correo);
 		query.setParameter(2, contrasena);
 		
 
-		Object usuarios = query.getSingleResult();
-
-		Usuario resultado = (Usuario) usuarios;
+		//Object usuarios = query.getSingleResult();
+		List<Usuario> usuarios= query.getResultList();
+		//Usuario resultado = (Usuario) usuarios;
 
 		//List<Rol> roles = query.getResultList();
-		return resultado;
+		return usuarios;
 	}
-	
+	/*
+	public List<Usuario> getIniciarSesion(Usuario usuario) {
+		String correo= usuario.getCorreo();
+		String contrasena=usuario.getContrasena();
+		String jpql2 = "SELECT p FROM Usuario p" + " WHERE correo LIKE ?1";
+
+		correo = correo + "%";
+		contrasena= contrasena+"%";
+		Query query = em.createQuery(jpql2, Rol.class);
+		query.setParameter(1, correo);
+		//query.setParameter(2, contrasena);
+		
+
+		//Object usuarios = query.getSingleResult();
+		List<Usuario> usuarios= query.getResultList();
+		//Usuario resultado = (Usuario) usuarios;
+
+		//List<Rol> roles = query.getResultList();
+		return usuarios;
+	}
+	*/
 
 }

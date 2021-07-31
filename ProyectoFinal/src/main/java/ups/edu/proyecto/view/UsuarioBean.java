@@ -90,8 +90,10 @@ public class UsuarioBean implements Serializable {
 	
 	public String iniciarSesion() {
 		String mensaje="";
-		
+		Usuario user= new Usuario();
 		newUsuario=usuarioON.iniciarSesion(newUsuario);
+		System.out.println("Recupero: "+newUsuario.getCedula());
+		System.out.println(newUsuario);
 		if(newUsuario != null) {
 			return mensaje="Existe";
 		}else {
@@ -120,7 +122,9 @@ public class UsuarioBean implements Serializable {
 		return "CrearCliente?faces-redirect=true";
 	}
 	
-	
+	public String paginaIniciarSesion() {
+		return "IniciarSesion?faces-redirect=true";
+	}
 	
 	
 

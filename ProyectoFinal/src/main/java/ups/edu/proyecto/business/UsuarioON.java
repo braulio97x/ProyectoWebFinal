@@ -56,7 +56,20 @@ public void insertUsuario(Usuario usuario) throws Exception {
 	*/
 	
 	public Usuario iniciarSesion(Usuario usuario) {
-		return daoUsuario.getIniciarSesion(usuario);
+		List<Usuario> usuarios= daoUsuario.getIniciarSesion(usuario);
+		Usuario resultado= new Usuario();
+		for(Usuario elemento: usuarios) {
+			resultado.setCedula(elemento.getCedula());
+			resultado.setNombre(elemento.getNombre());
+			resultado.setDireccion(elemento.getDireccion());
+			resultado.setApellido(elemento.getApellido());
+			resultado.setRol(elemento.getRol());
+			resultado.setCorreo(elemento.getCorreo());
+			resultado.setContrasena(elemento.getContrasena());
+			
+			System.out.println("Elemento: "+elemento.getCorreo());
+		}
+		return resultado;
 	}
 	
 	

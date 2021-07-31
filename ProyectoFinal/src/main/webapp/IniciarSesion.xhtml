@@ -7,9 +7,10 @@
 <h:head></h:head>
 <body>
 	<h:form>
-		<h:commandButton action="#{usuarioBean.paginaCrearCliente()}"
-			value="CrearUsuario" />
-		<h:commandButton action="#{usuarioBean.probando()}" value="Probando Iniciar Sesion" />
+		Correo: <h:inputText value="#{usuarioBean.newUsuario.correo}" />
+		Contrasena: <h:inputText value="#{usuarioBean.newUsuario.contrasena}" />
+		<h:commandButton action="#{usuarioBean.iniciarSesion()}"
+			value="Iniciar Sesion" />
 	</h:form>
 
 </body>
