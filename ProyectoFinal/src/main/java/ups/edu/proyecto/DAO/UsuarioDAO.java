@@ -52,8 +52,8 @@ public class UsuarioDAO {
 		String contrasena=usuario.getContrasena();
 		String jpql2 = "SELECT p FROM Usuario p" + " WHERE correo LIKE ?1 AND contrasena LIKE ?2";
 
-		correo = correo + "%";
-		contrasena= contrasena+"%";
+		//correo = correo + "%";
+		//contrasena= contrasena+"%";
 		Query query = em.createQuery(jpql2, Usuario.class);
 		query.setParameter(1, correo);
 		query.setParameter(2, contrasena);

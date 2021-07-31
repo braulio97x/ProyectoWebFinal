@@ -94,8 +94,8 @@ public class UsuarioBean implements Serializable {
 		newUsuario=usuarioON.iniciarSesion(newUsuario);
 		System.out.println("Recupero: "+newUsuario.getCedula());
 		System.out.println(newUsuario);
-		if(newUsuario != null) {
-			return mensaje="Existe";
+		if(newUsuario.getCedula() != null) {
+			return mensaje="PaginaInicial?faces-redirect=true";
 		}else {
 			return mensaje="Error no existe cuenta";
 		}
@@ -105,7 +105,7 @@ public class UsuarioBean implements Serializable {
 	
 	public String probando() {
 		String mensaje="Ok";
-		System.out.println("Hola");
+		System.out.println(newUsuario.getCedula());
 		//newUsuario.setRol(newRol);
 		//System.out.println(newUsuario.getRol().getCargo());
 		//String cargo= newUsuario.getRol().getCargo();
@@ -113,6 +113,7 @@ public class UsuarioBean implements Serializable {
 		//Rol rol2=rolON.getRolNombre(cargo);
 		//System.out.println(rol.getCodigo() +" " +rol.getCargo() +" Encontro Rol Query");
 		//System.out.println(rol.getCodigo()+" "+rol.getCargo());
+		
 		
 		return mensaje;
 		
