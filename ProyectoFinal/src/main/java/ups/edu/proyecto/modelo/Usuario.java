@@ -1,10 +1,13 @@
 package ups.edu.proyecto.modelo;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,6 +26,9 @@ public class Usuario {
 	
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private CarritoCabecera carritoCabecera;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<FacturaCabecera> facturaCabeceras;
 
 	public String getCedula() {
 		return cedula;

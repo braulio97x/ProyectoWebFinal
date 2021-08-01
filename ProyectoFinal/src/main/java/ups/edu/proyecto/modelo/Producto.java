@@ -1,9 +1,11 @@
 package ups.edu.proyecto.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Producto {
@@ -16,6 +18,12 @@ public class Producto {
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
+	
+	
+	@ManyToOne
+	//@JoinColumn(name = "carritoDetalle_id")
+	@OneToMany(mappedBy = "productos", cascade = CascadeType.ALL)
+	private CarritoDetalle carritoDetalle;
 
 	public int getCodigo() {
 		return codigo;
