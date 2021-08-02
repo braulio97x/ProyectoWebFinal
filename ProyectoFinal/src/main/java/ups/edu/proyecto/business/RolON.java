@@ -56,5 +56,10 @@ public class RolON {
 		return rol;
 	}
 	
+	
+	public Rol readRol(int codigo){
+		return daoRol.read(codigo);
+		}
+	
 
 }
