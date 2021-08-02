@@ -76,7 +76,7 @@ public class UsuarioBean implements Serializable {
 	public String crearCuenta(){
 		String mensaje="";
 		try {
-			newUsuario.getRol().setCargo("Cliente");
+			newUsuario.getRol().setCargo("Cliente".toLowerCase());
 			Rol rol = rolON.getRolNombreList(newUsuario.getRol().getCargo());
 			newUsuario.setRol(rol);
 			usuarioON.insertUsuario(newUsuario);
@@ -130,6 +130,8 @@ public class UsuarioBean implements Serializable {
 		return "IniciarSesion?faces-redirect=true";
 	}
 	
-	
+	//public String agregarProducto() {
+		
+	//}
 
 }

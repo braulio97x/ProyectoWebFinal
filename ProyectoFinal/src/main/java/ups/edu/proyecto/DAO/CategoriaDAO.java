@@ -24,13 +24,13 @@ public class CategoriaDAO {
 		em.merge(categoria);
 	}
 	
-	public Categoria read(String cedula) {
-		Categoria p = em.find(Categoria.class, cedula);
+	public Categoria read(int codigo) {
+		Categoria p = em.find(Categoria.class, codigo);
 		return p;
 	}
 	
-	public void delete(String cedula) {
-		Categoria p = em.find(Categoria.class, cedula);
+	public void delete(int codigo) {
+		Categoria p = em.find(Categoria.class, codigo);
 		em.remove(p);
 	}
 	
