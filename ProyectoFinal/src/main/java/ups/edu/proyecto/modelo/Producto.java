@@ -1,15 +1,23 @@
 package ups.edu.proyecto.modelo;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Producto {
+public class Producto  implements Serializable{
 	@Id
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="producto_id")
 	private int codigo;
 	private String nombre;
 	private int stock;
@@ -20,10 +28,10 @@ public class Producto {
 	private Categoria categoria;
 	
 	
-	@ManyToOne
-	//@JoinColumn(name = "carritoDetalle_id")
-	@OneToMany(mappedBy = "productos", cascade = CascadeType.ALL)
-	private CarritoDetalle carritoDetalle;
+	
+	//@ManyToOne
+	//@JoinColumn(name = "carrito_detalle_id")
+	//private CarritoDetalle carritoDetalle;
 
 	public int getCodigo() {
 		return codigo;

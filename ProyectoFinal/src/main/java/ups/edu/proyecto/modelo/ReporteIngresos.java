@@ -2,12 +2,20 @@ package ups.edu.proyecto.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ReporteIngresos {
 	@Id
 	private int codigo;
 
+	
+	@ManyToOne
+	@JoinColumn(name="producto_id")
+	private Producto producto;
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}

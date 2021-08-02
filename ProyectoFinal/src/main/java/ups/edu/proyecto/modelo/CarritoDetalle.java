@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CarritoDetalle {
@@ -22,14 +23,17 @@ public class CarritoDetalle {
 	@JoinColumn(name = "carrito_cabecera_id")
 	private CarritoCabecera carritoCabecera;
 	
+	
+	
 	/*
 	@ManyToOne
 	@JoinColumn(name = "producto_id")
 	private Producto producto;
 */
-	@OneToMany
+
+	@OneToOne
 	@JoinColumn(name = "producto_id")
-	private List<Producto> productos;
+	private Producto productos;
 	
 	
 	public int getCodigoCarDet() {
