@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,7 +16,7 @@ import ups.edu.proyecto.modelo.Rol;
 import ups.edu.proyecto.modelo.Usuario;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class UsuarioBean implements Serializable {
 	
 	@Inject
@@ -106,6 +107,8 @@ public class UsuarioBean implements Serializable {
 	public String probando() {
 		String mensaje="Ok";
 		System.out.println(newUsuario.getCedula());
+		System.out.println(newUsuario.getNombre());
+		System.out.println(newUsuario.getCorreo());
 		//newUsuario.setRol(newRol);
 		//System.out.println(newUsuario.getRol().getCargo());
 		//String cargo= newUsuario.getRol().getCargo();
