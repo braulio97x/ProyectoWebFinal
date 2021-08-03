@@ -76,7 +76,7 @@ public class UsuarioBean implements Serializable {
 	public String crearCuenta(){
 		String mensaje="";
 		try {
-			newUsuario.getRol().setCargo("Cliente".toLowerCase());
+			newUsuario.getRol().setCargo("Cliente".toUpperCase());
 			Rol rol = rolON.getRolNombreList(newUsuario.getRol().getCargo());
 			newUsuario.setRol(rol);
 			usuarioON.insertUsuario(newUsuario);

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -17,12 +18,11 @@ public class CarritoCabecera {
 	private int codigoCarCab;
 	private Date fecha;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name ="usuario_id")
 	private Usuario usuario;
 	
-	@OneToMany(mappedBy = "carritoCabecera", cascade = CascadeType.ALL)
-	private List<CarritoDetalle> carritoDetalles;
+	
 
 	public int getCodigoCarCab() {
 		return codigoCarCab;
@@ -48,14 +48,7 @@ public class CarritoCabecera {
 		this.usuario = usuario;
 	}
 
-	public List<CarritoDetalle> getCarritoDetalles() {
-		return carritoDetalles;
-	}
-
-	public void setCarritoDetalles(List<CarritoDetalle> carritoDetalles) {
-		this.carritoDetalles = carritoDetalles;
-	}
-
+	
 	
 	
 }

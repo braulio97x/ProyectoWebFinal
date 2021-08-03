@@ -16,6 +16,11 @@ public class ReporteIngresos {
 	private Producto producto;
 	
 	
+	@ManyToOne
+	@JoinColumn(name="usuario_id")
+	private Usuario usuario;
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}

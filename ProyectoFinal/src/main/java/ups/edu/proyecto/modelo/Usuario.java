@@ -3,6 +3,7 @@ package ups.edu.proyecto.modelo;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,6 +14,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Usuario {
 	@Id
+	@Column(name="usuario_id")
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -24,11 +26,7 @@ public class Usuario {
 	@JoinColumn(name = "rol_id")
 	private Rol rol;
 	
-	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-	private CarritoCabecera carritoCabecera;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-	private List<FacturaCabecera> facturaCabeceras;
 
 	public String getCedula() {
 		return cedula;
@@ -78,13 +76,7 @@ public class Usuario {
 		this.rol = rol;
 	}
 
-	public CarritoCabecera getCarritoCabecera() {
-		return carritoCabecera;
-	}
-
-	public void setCarritoCabecera(CarritoCabecera carritoCabecera) {
-		this.carritoCabecera = carritoCabecera;
-	}
+	
 
 	public String getContrasena() {
 		return contrasena;
