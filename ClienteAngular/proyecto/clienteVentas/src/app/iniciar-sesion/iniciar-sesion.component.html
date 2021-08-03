@@ -1,0 +1,15 @@
+HOLA {{usuario}}
+<form>
+
+    <label>Correo</label>
+    <input name="txtCorreo" type="text" [(ngModel)]="sesion.correo">
+
+    <label>Contrasena</label>
+    <input name="txtContrasena" type="text" [(ngModel)]="sesion.contrasena" >
+
+    
+
+    <button (click)="iniciarSesion()">iniciarSesion</button>
+
+
+</form>

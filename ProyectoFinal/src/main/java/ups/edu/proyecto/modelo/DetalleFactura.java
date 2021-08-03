@@ -14,6 +14,11 @@ public class DetalleFactura {
 	@ManyToOne
 	@JoinColumn(name = "facCabecera_id")
 	private FacturaCabecera facturaCabecera;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "producto_id")
+	private Producto producto;
 
 	public int getCodDetFac() {
 		return codDetFac;
