@@ -5,8 +5,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+
 import ups.edu.proyecto.DAO.ProductoDAO;
+import ups.edu.proyecto.modelo.Categoria;
 import ups.edu.proyecto.modelo.Producto;
+import ups.edu.proyecto.services.modelo.ProductoTemp;
 
 @Stateless
 public class ProductoON {
@@ -53,5 +56,12 @@ public void insertProducto(Producto producto) throws Exception {
 		return cliente;
 	}
 	*/
-	
+	public Producto agregarCategoria(ProductoTemp producto , Categoria categoria) {
+		Producto resultado= new Producto();
+		resultado.setCodigo(producto.getCodigo());
+		resultado.setNombre(producto.getNombre());
+		resultado.setValorUnitario(producto.getValorUnitario());
+		resultado.setCategoria(categoria);
+		return resultado;
+	}
 }

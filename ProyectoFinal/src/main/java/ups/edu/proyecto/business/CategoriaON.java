@@ -7,6 +7,8 @@ import javax.inject.Inject;
 
 import ups.edu.proyecto.DAO.CategoriaDAO;
 import ups.edu.proyecto.modelo.Categoria;
+import ups.edu.proyecto.modelo.Producto;
+import ups.edu.proyecto.services.modelo.ProductoTemp;
 
 @Stateless
 public class CategoriaON {
@@ -35,7 +37,19 @@ public class CategoriaON {
 			//throw new Exception("Cedula incorrecta");
 		//Persona per= daoPersona.read("0102930888");
 		
-		return daoCategoria.getCategorias("%");
+		return daoCategoria.getCategorias();
+	}
+	
+	public Categoria getCategoriaNombre(ProductoTemp producto){
+		String nombre= producto.getCategoria();
+		List<Categoria> categorias = daoCategoria.getCategoriaNombre(nombre);
+		Categoria resultado = new Categoria();
+		for(Categoria elemento:categorias) {
+			resultado.setCodigo(elemento.getCodigo());
+			resultado.setNombre(elemento.getNombre());
+		}
+		System.out.println(resultado.getNombre() +" "+ resultado.getCodigo());
+		return resultado;
 	}
 
 }

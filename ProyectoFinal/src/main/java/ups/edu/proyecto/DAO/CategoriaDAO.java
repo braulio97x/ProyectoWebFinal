@@ -34,13 +34,26 @@ public class CategoriaDAO {
 		em.remove(p);
 	}
 	
-	public List<Categoria> getCategorias(String nombre){
+	public List<Categoria> getCategoriaNombre(String nombre){
 		
 		String jpql2="SELECT p FROM Categoria p WHERE nombre LIKE ?1";
 		
-		nombre= nombre+"%";
+		//nombre= nombre+"%";
 		Query query= em.createQuery(jpql2, Categoria.class);
 		query.setParameter(1, nombre);
+		
+		List<Categoria> categorias=query.getResultList();
+		return categorias;
+		
+	}
+	
+	public List<Categoria> getCategorias(){
+		
+		String jpql2="SELECT p FROM Categoria p";
+		
+		//nombre= nombre+"%";
+		Query query= em.createQuery(jpql2, Categoria.class);
+		//query.setParameter(1, nombre);
 		
 		List<Categoria> categorias=query.getResultList();
 		return categorias;
