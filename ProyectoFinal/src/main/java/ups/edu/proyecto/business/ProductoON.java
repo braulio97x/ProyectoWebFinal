@@ -64,4 +64,19 @@ public void insertProducto(Producto producto) throws Exception {
 		resultado.setCategoria(categoria);
 		return resultado;
 	}
+	
+	public Producto recuperarProductoNombre(ProductoTemp producto) {
+		Producto resultado= new Producto();
+		String nombre=producto.getNombre();
+		System.out.println("Nombre:" +nombre);
+		List<Producto> listaproducto= daoProducto.getProductoNombre(nombre);
+		for(Producto elemento: listaproducto) {
+			resultado.setCodigo(elemento.getCodigo());
+			resultado.setNombre(elemento.getNombre());
+			resultado.setValorUnitario(elemento.getValorUnitario());
+			resultado.setCategoria(elemento.getCategoria());
+		}
+	System.out.println(resultado.getNombre() +"Recuperado");
+		return resultado;
+	}
 }

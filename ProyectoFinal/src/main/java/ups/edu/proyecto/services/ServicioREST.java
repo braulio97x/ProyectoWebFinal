@@ -69,15 +69,21 @@ public class ServicioREST {
 		System.out.println("Recupero: "+newUsuario.getCedula());
 		System.out.println(newUsuario);
 		if(newUsuario.getCedula() != null) {
-			msj.setCodigo(1);
-			msj.setMensaje("Si existe, iniciado");
-			return msj;
+			if(newUsuario.getRol().getCargo().equals("Cliente")) {
+				msj.setCodigo(1);
+				msj.setMensaje("Si existe, iniciado, Cliente");
+				return msj;
+			}else if(newUsuario.getRol().getCargo().equals("Administrador")) {
+				msj.setCodigo(2);
+				msj.setMensaje("Si existe, iniciado, Administrador");
+				return msj;
+			}
 		}else {
-			msj.setCodigo(2);
+			msj.setCodigo(0);
 			msj.setMensaje("Error no existe cuenta");
 			return msj;
 		}
 		
-		
+		return msj;
 	}
 }

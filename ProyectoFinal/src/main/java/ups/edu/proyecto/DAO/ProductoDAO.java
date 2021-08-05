@@ -34,13 +34,26 @@ public class ProductoDAO {
 		em.remove(p);
 	}
 	
+	public List<Producto> getProductoNombre(String nombre){
+		
+		String jpql2="SELECT p FROM Producto p WHERE nombre LIKE ?1";
+		
+		//nombre= nombre+"%";
+		Query query= em.createQuery(jpql2, Producto.class);
+		query.setParameter(1, nombre);
+		
+		List<Producto> productos=query.getResultList();
+		return productos;
+		
+	}
+	
 	public List<Producto> getProductos(String nombre){
 		
 		String jpql2="SELECT p FROM Producto p WHERE nombre LIKE ?1";
 		
-		nombre= nombre+"%";
+		//nombre= nombre+"%";
 		Query query= em.createQuery(jpql2, Producto.class);
-		query.setParameter(1, nombre);
+		//query.setParameter(1, nombre);
 		
 		List<Producto> productos=query.getResultList();
 		return productos;

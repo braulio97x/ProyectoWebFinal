@@ -6,8 +6,18 @@ public class ProductoTemp {
 	private String nombre;
 	private double valorUnitario;
 	private String categoria;
+	private String estado;
+	private int cantidad;
 	
 	
+	
+	
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
 	public int getCodigo() {
 		return codigo;
 	}
@@ -32,5 +42,13 @@ public class ProductoTemp {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	
 	
 }
