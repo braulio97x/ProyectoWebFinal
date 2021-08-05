@@ -7,7 +7,6 @@ const routes: Routes = [
   {path: "iniciarSesion", component:IniciarSesionComponent},
   {path: "crearCuenta", component: CrearCuentaComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

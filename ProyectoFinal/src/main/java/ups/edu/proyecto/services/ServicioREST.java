@@ -43,7 +43,7 @@ public class ServicioREST {
 		Rol newRol= new Rol();
 		//newUsuario.setRol(newRol);
 		Mensaje msj= new Mensaje();
-		newRol.setCargo("Cliente");
+		newRol.setCargo("Cliente".toUpperCase());
 		newRol=rolON.getRolNombreList(newRol.getCargo());
 		newUsuario.setRol(newRol);
 		
