@@ -1,15 +1,28 @@
-HOLA {{usuario}}
-<form>
+<!--HOLA {{usuario}}-->
 
-    <label>Correo</label>
-    <input name="txtCorreo" type="text" [(ngModel)]="sesion.correo">
+<div class="modal" >
+    <div class="container">
+        <div>
+            <div>
+            <div class ="modalHeader">
+                <span>x</span>
+                    <h2>Iniciar Sesion</h2>
+            </div>
+            <div class="modal-body">
+                <label>Correo</label>
+                <input name="txtCorreo" type="text" [(ngModel)]="sesion.correo">
+            
+                <label>Contrasena</label>
+                <input name="txtContrasena" type="text" [(ngModel)]="sesion.contrasena" >
+            
+                <br/>
+            
+                <button class="btn btn-success" (click)="iniciarSesion()">iniciarSesion</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
 
-    <label>Contrasena</label>
-    <input name="txtContrasena" type="text" [(ngModel)]="sesion.contrasena" >
-
-    
-
-    <button (click)="iniciarSesion()">iniciarSesion</button>
 
 
-</form>
