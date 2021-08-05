@@ -80,11 +80,11 @@ public class ServicioREST {
 		System.out.println("Recupero: "+newUsuario.getCedula());
 		System.out.println(newUsuario);
 		if(newUsuario.getCedula() != null) {
-			if(newUsuario.getRol().getCargo().equals("Cliente")) {
+			if(newUsuario.getRol().getCargo().equals("Cliente".toUpperCase())) {
 				msj.setCodigo(1);
 				msj.setMensaje("Si existe, iniciado, Cliente");
 				return msj;
-			}else if(newUsuario.getRol().getCargo().equals("Administrador")) {
+			}else if(newUsuario.getRol().getCargo().equals("Administrador".toUpperCase())) {
 				msj.setCodigo(2);
 				msj.setMensaje("Si existe, iniciado, Administrador");
 				return msj;

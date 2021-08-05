@@ -1,0 +1,27 @@
+<div class="modal">
+ <div class="container">
+     <div>
+         <div>
+            <div class ="modalHeader">
+                <span >x</span>
+                    <h2>Crear Cuenta</h2>
+            </div>
+            <div class ="modal-body">
+                <label>Cedula:</label>
+                <input name="txtCedula" type="text" [(ngModel)]="usuario.cedula">
+                <label>Nombre:</label>
+                <input name="txtNombre" type="text" [(ngModel)]="usuario.nombre">
+                <label>Apellido:</label>
+                <input name="txtApellido" type="text" [(ngModel)]="usuario.apellido">
+                <label>Direccion:</label>
+                <input name="txtDireccion" type="text" [(ngModel)]="usuario.direccion">
+                <label>Correo:</label>
+                <input name="txtCorreo" type="text" [(ngModel)]="usuario.correo">
+                <label>Contraseña:</label>
+                <input name="txtContrasena" type="text" [(ngModel)]="usuario.contrasena">
+                <br/>
+                <button class="btn btn-success" (click)="insertar()">Guardar</button>
+            </div>
+        </div> 
+    </div> 
+</div> 
