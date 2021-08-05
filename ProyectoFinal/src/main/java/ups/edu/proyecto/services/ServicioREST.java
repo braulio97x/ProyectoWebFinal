@@ -1,18 +1,26 @@
 package ups.edu.proyecto.services;
 
 import java.awt.Robot;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import ups.edu.proyecto.business.ProductoON;
 import ups.edu.proyecto.business.RolON;
 import ups.edu.proyecto.business.UsuarioON;
+import ups.edu.proyecto.modelo.Producto;
 import ups.edu.proyecto.modelo.Rol;
 import ups.edu.proyecto.modelo.Usuario;
+import ups.edu.proyecto.services.modelo.ProductoTemp;
+import ups.edu.proyecto.services.modelo.ProductosTemp;
 
 @Path("personas")
 public class ServicioREST {
@@ -22,6 +30,9 @@ public class ServicioREST {
 	
 	@Inject
 	private RolON rolON;
+	
+	@Inject
+	private ProductoON productoON;
 	
 	@PUT
 	@Path("/registrarUsuario")
@@ -86,4 +97,44 @@ public class ServicioREST {
 		
 		return msj;
 	}
+	
+	@GET
+	@Path("recuperar-productos")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ProductosTemp> getProductos(){
+		List<Producto> lista = productoON.getProductos();
+		List<ProductosTemp> productos = new ArrayList<ProductosTemp>();
+		
+		//PersonaTemp pert;
+		
+		for(Producto p: lista) {
+			ProductosTemp newProducto= new ProductosTemp();
+			newProducto.setCodigo(p.getCodigo());
+			newProducto.setNombre(p.getNombre());
+			newProducto.setCategoria(p.getCategoria().getNombre());
+			newProducto.setValorUnitario(p.getValorUnitario());
+			productos.add(newProducto);
+		}
+		return productos;
+	}
+	
+	@GET
+	@Path("recuperar-productos-nombre")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Producto> getProductosNombre(@QueryParam("p_a") String nombre){
+		List<Producto> lista =productoON.buscarProductos(nombre);
+		return lista;
+	}
+	
+	
+	@GET
+	@Path("recuperar-productos-categoria")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Producto> getProductosCategoria(@QueryParam("p_a") String nombre){
+		//List<Producto> lista = new ArrayList<Producto>();
+		 List<Producto> lista=productoON.recuperarProductoCategoria(nombre);
+		
+		return lista;
+	}
+	
 }

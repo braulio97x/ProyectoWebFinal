@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-
+import ups.edu.proyecto.DAO.CategoriaDAO;
 import ups.edu.proyecto.DAO.ProductoDAO;
 import ups.edu.proyecto.modelo.Categoria;
 import ups.edu.proyecto.modelo.Producto;
@@ -16,6 +16,9 @@ public class ProductoON {
 
 	@Inject
 	private ProductoDAO daoProducto;
+	
+	@Inject
+	private CategoriaDAO daoCategoria;
 	
 public void insertProducto(Producto producto) throws Exception {
 		
@@ -38,7 +41,7 @@ public void insertProducto(Producto producto) throws Exception {
 			//throw new Exception("Cedula incorrecta");
 		//Persona per= daoPersona.read("0102930888");
 		
-		return daoProducto.getProductos("%");
+		return daoProducto.getProductos();
 	}
 	
 	public Producto getProducto(int codigo) {
@@ -78,5 +81,25 @@ public void insertProducto(Producto producto) throws Exception {
 		}
 	System.out.println(resultado.getNombre() +"Recuperado");
 		return resultado;
+	}
+	
+	public List<Producto> buscarProductos(String nombre) {
+		return daoProducto.getProductosBuscar(nombre);
+		
+	}
+	
+	public List<Producto> recuperarProductoCategoria(String nombre){
+		Categoria newCategoria= new Categoria();
+		List<Categoria> categorias=daoCategoria.getCategoriaNombre(nombre);
+		for(Categoria elemento: categorias) {
+			newCategoria.setCodigo(elemento.getCodigo());
+			newCategoria.setNombre(elemento.getNombre());
+		}
+		System.out.println("Es: "+ newCategoria.getCodigo()+ " "+newCategoria.getNombre());
+		//int codigo=newCategoria.getCodigo();
+		//System.out.println(codigo);
+		List<Producto> productos=daoProducto.getProductosCategoria(newCategoria);
+		System.out.println(productos.get(0).getNombre());
+		return productos;
 	}
 }
