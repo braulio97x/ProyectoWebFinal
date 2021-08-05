@@ -33,7 +33,7 @@ public class CarritoDetalle {
 
 	@OneToOne
 	@JoinColumn(name = "producto_id")
-	private Producto productos;
+	private Producto producto;
 	
 	
 	public int getCodigoCarDet() {
@@ -82,6 +82,14 @@ public class CarritoDetalle {
 
 	public void setCarritoCabecera(CarritoCabecera carritoCabecera) {
 		this.carritoCabecera = carritoCabecera;
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
 	

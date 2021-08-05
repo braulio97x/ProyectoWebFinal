@@ -69,6 +69,7 @@ public class ServicioAdmin {
 		Categoria categoria = categoriaON.getCategoriaNombre(producto);
 		resultado = productoON.agregarCategoria(producto, categoria);
 		Mensaje msj= new Mensaje();
+	
 
 		try {
 

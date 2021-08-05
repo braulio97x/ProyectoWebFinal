@@ -1,5 +1,6 @@
 package ups.edu.proyecto.modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class CarritoCabecera {
 	@ManyToOne()
 	@JoinColumn(name ="usuario_id")
 	private Usuario usuario;
+	
+	@OneToMany(mappedBy = "carritoCabecera", cascade=CascadeType.ALL)
+	private List<CarritoDetalle> detalles;
 	
 	
 
@@ -48,7 +52,21 @@ public class CarritoCabecera {
 		this.usuario = usuario;
 	}
 
-	
+	public void agregarDetalle(CarritoDetalle detalle) {
+		
+		if(detalles == null) {
+			detalles= new ArrayList<CarritoDetalle>();
+		}
+		detalles.add(detalle);
+	}
+
+	public List<CarritoDetalle> getDetalles() {
+		return detalles;
+	}
+
+	public void setDetalles(List<CarritoDetalle> detalles) {
+		this.detalles = detalles;
+	}
 	
 	
 }

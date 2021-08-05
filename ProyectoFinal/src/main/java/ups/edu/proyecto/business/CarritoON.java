@@ -1,17 +1,25 @@
 package ups.edu.proyecto.business;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ups.edu.proyecto.DAO.CarritoCabeceraDAO;
-
+import ups.edu.proyecto.DAO.ProductoDAO;
 import ups.edu.proyecto.modelo.CarritoCabecera;
+import ups.edu.proyecto.modelo.CarritoDetalle;
+import ups.edu.proyecto.modelo.DetalleFactura;
+import ups.edu.proyecto.modelo.Producto;
+import ups.edu.proyecto.services.modelo.ProductoTemp;
 
 
 @Stateless
 public class CarritoON {
+	
+	@Inject
+	private ProductoDAO daoProducto;
 
 	@Inject
 	private CarritoCabeceraDAO daoCarrito;
@@ -31,13 +39,14 @@ public void insertCarrito(CarritoCabecera carrito) throws Exception {
 		daoCarrito.delete(com);
 	}
 	
-	public List<CarritoCabecera> getCarrito() {
+	public CarritoCabecera getCarritoUltimo() {
 		
-		//if(!this.validaCedula(persona.getCedula()))
-			//throw new Exception("Cedula incorrecta");
-		//Persona per= daoPersona.read("0102930888");
+		List<CarritoCabecera> cabeceras= daoCarrito.getCarritoUltimo();
+		CarritoCabecera carrito= new CarritoCabecera();
+		int longitud= cabeceras.size();
+		carrito=cabeceras.get(longitud-1);;
 		
-		return daoCarrito.getCarritoCabeceras("%");
+		return carrito;
 	}
 	
 	public CarritoCabecera getCarritos(String cedula) {
@@ -56,4 +65,33 @@ public void insertCarrito(CarritoCabecera carrito) throws Exception {
 	}
 	*/
 	
+	
+	public CarritoDetalle agregarDetalle(ProductoTemp productoTemp, Producto producto) {
+		CarritoDetalle detalle=new CarritoDetalle();
+		detalle.setCodigoCarDet(productoTemp.getCodigo());
+		detalle.setCantidad(productoTemp.getCantidad());
+		detalle.setPrecio(producto.getValorUnitario());
+		detalle.setProducto(producto);
+		
+		return detalle;
+	}
+	
+	public CarritoCabecera agregarProducto(Producto producto, ProductoTemp productoTemp) {
+		CarritoCabecera carrito = new CarritoCabecera();
+		CarritoDetalle detalle= new CarritoDetalle();
+		
+		if(productoTemp.getEstado().equals("nueva")) {
+			//carrito= new CarritoCabecera();
+			carrito.setCodigoCarCab(1);
+			System.out.println("Nueva");
+		}else if(productoTemp.getEstado() == "actual"){
+			carrito=getCarritoUltimo();
+			System.out.println("Actual: "+carrito.getCodigoCarCab());
+		}
+		
+		detalle=agregarDetalle(productoTemp, producto);
+		carrito.agregarDetalle(detalle);
+		return carrito;
+		
+	}
 }
