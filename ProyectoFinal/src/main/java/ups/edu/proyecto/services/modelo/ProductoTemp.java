@@ -9,8 +9,7 @@ public class ProductoTemp {
 	private String estado;
 	private int cantidad;
 	
-	
-	
+
 	
 	public int getCantidad() {
 		return cantidad;
