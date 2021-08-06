@@ -13,9 +13,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import ups.edu.proyecto.business.CategoriaON;
 import ups.edu.proyecto.business.ProductoON;
 import ups.edu.proyecto.business.RolON;
 import ups.edu.proyecto.business.UsuarioON;
+import ups.edu.proyecto.modelo.Categoria;
 import ups.edu.proyecto.modelo.Producto;
 import ups.edu.proyecto.modelo.Rol;
 import ups.edu.proyecto.modelo.Usuario;
@@ -33,6 +35,9 @@ public class ServicioREST {
 	
 	@Inject
 	private ProductoON productoON;
+	
+	@Inject
+	private CategoriaON categoriaON;
 	
 	@PUT
 	@Path("/registrarUsuario")
@@ -96,6 +101,27 @@ public class ServicioREST {
 		}
 		
 		return msj;
+	}
+	
+	@GET
+	@Path("recuperar-categorias")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Categoria> getCategoria(){
+		List<Categoria> lista = categoriaON.getCategorias();
+		//List<ProductosTemp> productos = new ArrayList<ProductosTemp>();
+		
+		//PersonaTemp pert;
+		/*
+		for(Producto p: lista) {
+			ProductosTemp newProducto= new ProductosTemp();
+			newProducto.setCodigo(p.getCodigo());
+			newProducto.setNombre(p.getNombre());
+			newProducto.setCategoria(p.getCategoria().getNombre());
+			newProducto.setValorUnitario(p.getValorUnitario());
+			productos.add(newProducto);
+		}
+		*/
+		return lista;
 	}
 	
 	@GET
