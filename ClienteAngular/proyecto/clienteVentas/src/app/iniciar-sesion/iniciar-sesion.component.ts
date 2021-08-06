@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Sesion } from '../domain/sesion';
 import { SesionesService } from '../services/sesiones.service';
@@ -13,8 +13,8 @@ import { SesionesService } from '../services/sesiones.service';
  
 })
 export class IniciarSesionComponent implements OnInit {
- // @Input() visible: boolean;
-//Output close:EventEmitter<boolean> =new EventEmitter;
+
+//@Input() visible:boolean;
 @Output() close:EventEmitter<boolean>=new EventEmitter();
   usuario: string= "Braulio Astudillo";
   sesion:Sesion=new Sesion();
