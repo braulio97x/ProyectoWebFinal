@@ -13,21 +13,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+//Entidad Carrito Cabecera
 @Entity
 public class CarritoCabecera {
+	//Clave primaria de carrito cabecera
 	@Id
 	private int codigoCarCab;
 	private Date fecha;
 	
+	//Relacion muchos a uno con usuario
 	@ManyToOne()
+	//FOREIGN KEY usuario_id
 	@JoinColumn(name ="usuario_id")
 	private Usuario usuario;
-	
+	//Ralacion Uno a muchos con detalle factura
 	@OneToMany(mappedBy = "carritoCabecera", cascade=CascadeType.ALL)
 	private List<CarritoDetalle> detalles;
 	
 	
-
+	//getts y setts
 	public int getCodigoCarCab() {
 		return codigoCarCab;
 	}

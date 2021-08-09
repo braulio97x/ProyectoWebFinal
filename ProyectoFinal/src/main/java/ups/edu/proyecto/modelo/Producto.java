@@ -1,3 +1,4 @@
+//Paquete de la entidad
 package ups.edu.proyecto.modelo;
 
 import java.io.Serializable;
@@ -12,27 +13,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+//Entidad Producto
 @Entity
 public class Producto  implements Serializable{
+	//Clave primaria de producto_id
 	@Id
-	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//renombramiento de columna
 	@Column(name="producto_id")
 	private int codigo;
 	private String nombre;
 	private int stock;
 	private Double valorUnitario;
-	
+	//Relacion muchos a uno con categoria
 	@ManyToOne
+	//FOREIGN KEY categoria_id
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	
-	
-	
-	//@ManyToOne
-	//@JoinColumn(name = "carrito_detalle_id")
-	//private CarritoDetalle carritoDetalle;
-
+	//getts y setts
 	public int getCodigo() {
 		return codigo;
 	}

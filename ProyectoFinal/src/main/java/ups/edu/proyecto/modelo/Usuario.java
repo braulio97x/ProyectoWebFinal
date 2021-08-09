@@ -1,3 +1,4 @@
+//Paquete de la entidad
 package ups.edu.proyecto.modelo;
 
 import java.util.List;
@@ -11,9 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+//entidad usuario
 @Entity
 public class Usuario {
+	//clave primaria de la entidad
 	@Id
+	//Renombramiento de la columna
 	@Column(name="usuario_id")
 	private String cedula;
 	private String nombre;
@@ -22,12 +26,14 @@ public class Usuario {
 	private String correo;
 	private String contrasena;
 	
+	//Relacion muchos a uno con Rol
 	@ManyToOne
+	//FOREIGN KEY producto_id
 	@JoinColumn(name = "rol_id")
 	private Rol rol;
 	
 	
-
+	//getts y setts
 	public String getCedula() {
 		return cedula;
 	}

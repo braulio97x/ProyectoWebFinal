@@ -1,3 +1,4 @@
+//Paquete de la clase
 package ups.edu.proyecto.modelo;
 
 import java.util.List;
@@ -9,33 +10,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+//Entidad carrito detalle
 @Entity
 public class CarritoDetalle {
+	//clave primaria de carrito detalle
 	@Id
 	private int codigoCarDet;
 	private int cantidad;
 	private Double precio;
 	private Double iva;
 	private Double total;
-	
+	//Relacion de muchos a uno con carrito cabecera
 	@ManyToOne
+	//FOREIGN KEY carrito_cabecera_id
 	@JoinColumn(name = "carrito_cabecera_id")
 	private CarritoCabecera carritoCabecera;
 	
-	
-	
-	/*
-	@ManyToOne
-	@JoinColumn(name = "producto_id")
-	private Producto producto;
-*/
-
+	//Relacion uno a uno con producto
 	@OneToOne
+	//FOREIGN KEY producto_id
 	@JoinColumn(name = "producto_id")
 	private Producto producto;
 	
 	
+	//Getts y setts
 	public int getCodigoCarDet() {
 		return codigoCarDet;
 	}

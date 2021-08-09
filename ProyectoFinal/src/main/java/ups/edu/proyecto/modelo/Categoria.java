@@ -1,3 +1,4 @@
+//paquete de la clase
 package ups.edu.proyecto.modelo;
 
 import java.util.List;
@@ -8,16 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+//Entidad Categoria
 @Entity
 public class Categoria {
+	//Clave primaria de categoria
 	@Id
+	//FOREIGN KEY categoria_id
 	@Column(name="categoria_id")
 	private int codigo;
 	private String nombre;
 	
-	/*@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	private List<Producto> productos;
-*/
+	
+	//getts y setts
 	public int getCodigo() {
 		return codigo;
 	}
