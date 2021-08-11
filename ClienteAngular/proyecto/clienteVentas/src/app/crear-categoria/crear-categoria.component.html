@@ -1,0 +1,64 @@
+<div class="modal" >
+    <div class="container">
+        <div>
+            <div>
+                <div class ="modalHeader">
+                    <span (click)="closeModal()">x</span>
+                        <h2>Crear Categoria</h2>
+                </div>
+                <div class="modal-body">
+                    
+                    <label>Id</label>
+                    <input name="txtid" type="text" [(ngModel)]="categoria.codigo">
+                
+                    <label>Nombre</label>
+                    <input name="txtNombre" type="text" [(ngModel)]="categoria.nombre" >
+                
+                    <br/>
+                
+                    <button class="btn btn-success" (click)="insertar()">Crear</button>
+
+                    <br/>
+
+                    <div>
+                        
+                        <br>
+                        
+                        <hr>
+                    </div>
+
+
+                    <div>
+
+                        <table class="table">
+                            <thead class="thead">
+                              <tr>
+                                  <th>Codigo</th>
+                                  <th>Nombre</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody class="tbody">
+                              
+                                  
+
+                                  <tr *ngFor="let categoria of categorias | async">
+                                    <td>{{categoria.codigo}}</td>
+                                    <td>{{categoria.nombre}}</td>
+                                    
+                                  </tr>
+                              
+                              
+                            </tbody>
+                          </table>
+                        
+                    </div>
+                  
+
+
+      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="modal" >
+    <div class="container">
+        <div>
+            <div>
+                <div class ="modalHeader">
+                    <span (click)="closeModal()">x</span>
+                        <h2>Crear Producto</h2>
+                </div>
+                <div class="modal-body">
+                    
+                    <label>codigo</label>
+                    <input name="txtCodigo" type="text" [(ngModel)]="producto.codigo">
+                
+                    <label>Nombre</label>
+                    <input name="txtNombre" type="text" [(ngModel)]="producto.nombre" >
+
+                    <label>Categoria</label>
+                    <input name="txtCategoria" type="text" [(ngModel)]="producto.categoria" >
+
+                    <label>ValorUnit</label>
+                    <input name="txtValorUnit" type="text" [(ngModel)]="producto.valorUnitario" >
+                
+                    <br/>
+                
+                    <button class="btn btn-success" (click)="insertar()">Crear</button>
+
+                    <br/>
+
+                    <div>
+                        
+                        <br>
+                        
+                        <hr>
+                    </div>
+
+
+                    <div>
+
+                        <table class="table">
+                            <thead class="thead">
+                              <tr>
+                                  <th>Codigo</th>
+                                  <th>Nombre</th>
+                                  <th>Categoria</th>
+                                  <th>ValorUnit</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody class="tbody">
+                              
+                                  
+
+                                  <tr *ngFor="let producto of productos | async">
+                                    <td>{{producto.codigo}}</td>
+                                    <td>{{producto.nombre}}</td>
+                                    <td>{{producto.categoria}}</td>
+                                    <td>{{producto.valorUnitario}}</td>
+                                    
+                                  </tr>
+                              
+                              
+                            </tbody>
+                          </table>
+                        
+                    </div>
+                  
+
+
+      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

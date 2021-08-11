@@ -32,6 +32,7 @@ public class CarritoCabecera {
 	
 	
 	//getts y setts
+	
 	public int getCodigoCarCab() {
 		return codigoCarCab;
 	}

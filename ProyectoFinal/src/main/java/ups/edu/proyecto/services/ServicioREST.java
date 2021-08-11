@@ -87,11 +87,14 @@ public class ServicioREST {
 		if(newUsuario.getCedula() != null) {
 			if(newUsuario.getRol().getCargo().equals("Cliente".toUpperCase())) {
 				msj.setCodigo(1);
-				msj.setMensaje("Si existe, iniciado, Cliente");
+				msj.setMensaje("Si existe, Bienvenido"+" "+ newUsuario.getNombre()+" " +"ha iniciado como Cliente");
+				//msj.setMensaje("Bienvenido, " + newUsuario.getNombre());
 				return msj;
 			}else if(newUsuario.getRol().getCargo().equals("Administrador".toUpperCase())) {
 				msj.setCodigo(2);
-				msj.setMensaje("Si existe, iniciado, Administrador");
+				//msj.setMensaje("Si existe, iniciado, Administrador");
+				//msj.setMensaje("Bienvenido, " + newUsuario.getNombre());
+				msj.setMensaje("Si existe, Bienvenido"+" "+ newUsuario.getNombre()+" " +"ha iniciado como Administrador");
 				return msj;
 			}
 		}else {

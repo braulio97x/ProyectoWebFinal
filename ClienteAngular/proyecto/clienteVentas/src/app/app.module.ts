@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
+import { CrearCategoriaComponent } from './crear-categoria/crear-categoria.component';
+import { CrearProductoComponent } from './crear-producto/crear-producto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IniciarSesionComponent,
-    CrearCuentaComponent
+    CrearCuentaComponent,
+    CrearCategoriaComponent,
+    CrearProductoComponent
   ],
   imports: [
     BrowserModule,
